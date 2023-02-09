@@ -21,14 +21,12 @@
           - xorg
           - xauth
 
-    - name: Install Go
+    - name: Install Go version 1.18
       become: yes
-      command: "{{ item }}"
-      loop:
-        - wget https://go.dev/dl/go1.18.linux-amd64.tar.gz
-        - tar -C /usr/local -xzf go1.18.linux-amd64.tar.gz
-        - rm go1.18.linux-amd64.tar.gz
-        - echo 'export PATH=$PATH:/usr/local/go/bin' | sudo tee -a /etc/profile
+      apt:
+        state: present
+        name: golang-1.18
+        default_release: focal-updates
 
     - name: Install Electron
       become: yes
