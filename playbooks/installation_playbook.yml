@@ -1,4 +1,4 @@
---a
+---
 - name: Configure Credlancer environment
   hosts: localhost
   become: yes
