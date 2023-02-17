@@ -1,14 +1,9 @@
----
+--a
 - name: Configure Credlancer environment
   hosts: localhost
-  become: no
+  become: yes
 
   tasks:
-    - name: Update and upgrade apt packages
-      become: yes
-      apt:
-        upgrade: 'yes'
-
     - name: Install development tools
       become: yes
       apt:
