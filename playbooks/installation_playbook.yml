@@ -11,19 +11,25 @@
         name:
           - git
 
-    - name: Download Go binary
+    #- name: Download Go binary
+    #  become: yes
+    #  get_url:
+    #    url: https://go.dev/dl/go1.18.linux-amd64.tar.gz
+    #    dest: /usr/local/
+    #    mode: '644'
+
+    - name: Unarchive Go binary
       become: yes
-      get_url:
+      unarchive:
         url: https://go.dev/dl/go1.18.linux-amd64.tar.gz
         dest: /usr/local/
-        mode: '644'
 
-    - name: Extract Go binary
-      become: yes
-      command: "{{ item }}"
-      loop:
-        - tar -C /usr/local -xzf /usr/local/go1.18.linux-amd64.tar.gz
-        - rm /usr/local/go1.18.linux-amd64.tar.gz
+    #- name: Extract Go binary
+    #  become: yes
+    #  command: "{{ item }}"
+    #  loop:
+    #    - tar -C /usr/local -xzf /usr/local/go1.18.linux-amd64.tar.gz
+    #    - rm /usr/local/go1.18.linux-amd64.tar.gz
 
     - name: Add Go binary to PATH
       lineinfile:
